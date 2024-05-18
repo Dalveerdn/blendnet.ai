@@ -1,0 +1,380 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 100%;
+  left: 50%;
+  width: 400px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  background-image: linear-gradient(to bottom right, #ffffff, #007bff);
+  max-width: 400px;
+  border-radius: 8px;
+}
+
+/* Style the form container */
+.form-container {
+  position: relative; /* Changed from absolute to relative */
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-image: linear-gradient(to bottom right, #ffffff, #007bff);
+  text-align: center; /* Center align the text */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+/* Center the h2 headings */
+.form-container h2 {
+  margin-top: 0; /* Remove default margin */
+  margin-bottom: 20px; /* Add margin for spacing */
+}
+
+/* Style the buttons */
+#buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#buttons .logregbutton {
+  margin: 0 10px;
+  padding: 10px 40px; /* Adjusted padding */
+  font-size: 16px;
+  background-color: #007bff; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+#buttons button span {
+  position: relative;
+  z-index: 1; /* Set a higher z-index for the text */
+}
+
+#buttons .logregbutton:hover {
+  background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  cursor: pointer;
+  color: #888; /* Change color */
+  font-size: 34px; /* Reduce font size */
+  z-index: 1;
+}
+
+.close-icon:hover {
+  color: #555; /* Darker color on hover */
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+  text-align: left;
+  font-family: Arial, sans-serif;
+}
+input[type="text"],
+input[type="email"],
+textarea[type="text"],
+input[type="password"] {
+  border: none;
+  border-bottom: 2px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 5px;
+  width: 100%;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-bottom: 2px solid white; /* You can modify this to change the focus style */
+}
+.title-brand {
+  position: fixed;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  font-size: 40px; /* Adjust font size as needed */
+  font-weight: bold; /* Make text bold */
+  position: fixed; /* Position the title fixed */
+  top: 20px; /* Position from the top */
+  left: 50%; /* Position from the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  animation: fadeIn 1.5s ease forwards; /* Apply animation */
+  opacity: 0; /* Start with opacity 0 */
+  z-index: 999; /* Ensure it's above other content */
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 */
+  }
+}
+#submitButton {
+  background-color: fefefe;
+  color: #355e3b;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute; /* Set button position to absolute */
+  bottom: 16px; /* Adjust the bottom position as needed */
+  left: 40%;
+}
+.logo {
+  height: auto; /* Maintain aspect ratio */
+}
+.custom-text {
+  font-size: 32px;
+}
+
+.color_37 {
+  /* Define the styles for the color_37 class */
+  /* Example styles */
+  color: #333;
+}
+
+.color_42 {
+  color: #7b68ee;
+}
+.global-container {
+  /* display: none; /* Keeps the container hidden */
+  position: fixed;
+  top: 0; /* Positions the container at the top */
+  left: 0; /* Positions the container at the left */
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000; /* Ensures it is on top of other elements */
+}
+.btn-watchList:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.4); /* Custom focus outline */
+}
+.btn-watchList {
+  background-color: #7b68ee; /* Background color */
+  color: white; /* Text color */
+  padding: 10px 20px; /* Padding around the text */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Font weight */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease; /* Smooth transitions */
+  position: absolute;
+}
+.watchList {
+  display: none;
+  height: 100%;
+  width: 20%;
+  top: 0;
+  background-color: white;
+  z-index: 300;
+  border-radius: 5px;
+  position: relative;
+  padding-top: 30px;
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Webkit-based browsers */
+.watchList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.watchList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.watchList::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.watchList::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Firefox */
+.watchList {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+#das-close-icon {
+  position: absolute;
+  top: 8px; /* Adjust as needed */
+  right: 8px; /* Adjust as needed */
+  font-size: 28px;
+  cursor: pointer;
+  /* Any additional styles for the close icon */
+}
+.watchListFields {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 78%;
+  height: 43px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  padding: 10px; /* Optional padding */
+  justify-content: space-between;
+}
+
+.watchListFields p {
+  margin-left: 70px; /* Remove default margin */
+  margin-right: 19px;
+  padding: 5px 10px; /* Padding inside the p tags */
+  border-radius: 5px;
+  border: 1px solid #ddd; /* Optional border */
+  background-color: #f9f9f9; /* Optional background color */
+  flex-shrink: 0; /* Prevent the p tags from shrinking */
+}
+
+.watchListFields button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.watchListFields button:hover {
+  background-color: #0056b3;
+}
+.symbol-button {
+  margin: 4px 0; /* Add some space between the buttons */
+  padding: 10px; /* Optional: Add some padding for better appearance */
+  width: 100%; /* Optional: Adjust the width as needed */
+  text-align: center; /* Optional: Center the text */
+  background-color: #f0f0f0; /* Optional: Set background color */
+  border: 1px solid #ccc; /* Optional: Set border */
+  border-radius: 4px; /* Optional: Add rounded corners */
+}
+.stock-records {
+  display: none;
+  background-color: #f0f0f0; /* Choose your desired background color */
+  padding: 10px; /* Add some padding for spacing */
+  border-radius: 10px; /* Add border radius */
+  position: fixed; /* Position the element fixed */
+  bottom: 240px; /* Distance from the bottom */
+  right: 300px; /* Distance from the right */
+  width: 400px;
+  height: 120px;
+  align-items: center;
+  padding-left: 40px; /* Optional padding */
+  padding-right: 40px; /* Optional padding */
+  justify-content: space-between;
+}
+
+/* Show p tags horizontally */
+.stock-data-p {
+  margin-left: 10px; /* Remove default margin */
+  margin-right: 39px;
+  padding: 5px 10px; /* Padding inside the p tags */
+  border-radius: 5px;
+  border: 1px solid #ddd; /* Optional border */
+  background-color: #f9f9f9; /* Optional background color */
+}
+#formModal {
+  display: none;
+  position: fixed; /* Changed from absolute to relative */
+  width: 40%;
+  top: 20%;
+  left: 30%;
+  height: 57%;
+  padding: 20px;
+  background-image: linear-gradient(to bottom right, #ffffff, #007bff);
+  text-align: center; /* Center align the text */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding-top: 80px;
+  z-index: 1000;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #888; /* Change color */
+  font-size: 33px; /* Reduce font size */
+}
+
+.close-button:hover {
+  color: #555; /* Darker color on hover */
+}
+
+#submitbutton {
+  background-color: fefefe;
+  color: #355e3b;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute; /* Set button position to absolute */
+  bottom: 16px; /* Adjust the bottom position as needed */
+  left: 40%;
+}
+.modal-overlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: pointer;
+  z-index: 900;
+}
+
+.modal-overlay::before {
+  content: "+";
+  position: absolute;
+  bottom: 10px; /* Adjust this value to move the + symbol up or down */
+  font-size: 36px;
+  width: 100%;
+  text-align: center;
+}
